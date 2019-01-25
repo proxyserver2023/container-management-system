@@ -39,6 +39,22 @@
 
 ## Getting Started
 
+### Prerequisites
+
+1. golang
+2. gRPC
+
+``` shell
+go get -u google.golang.org/grpc
+go get -u github.com/golang/protobuf/protoc-gen-go
+```
+
+## Resources
+
+- [Nginx Guide - Microservices From Design to Deployment](https://www.nginx.com/blog/introduction-to-microservices/)
+- [HTTP2 Performance](https://developers.google.com/web/fundamentals/performance/http2/)
+- [gRPC beyond the basic](https://blog.gopheracademy.com/advent-2017/go-grpc-beyond-basics/)
+
 ## Versioning
 
 We use [semver](#semver.org) for versioning. For the versions available, see the [tags](https://github.com/alamin-mahamud/container-management-system/tags) on this repository.
