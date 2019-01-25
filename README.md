@@ -4,6 +4,8 @@
 
 ## Table Of Contents
 
+- [Microservices](#microservices)
+- [Tools](#tools)
 - [Getting Started](#getting-started)
 - [Versioning](#versioning)
 - [Contributing](#contributing)
