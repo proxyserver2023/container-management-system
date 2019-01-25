@@ -7,6 +7,7 @@
 - [Microservices](#microservices)
 - [Tools](#tools)
 - [Getting Started](#getting-started)
+- [Resources](#resources)
 - [Versioning](#versioning)
 - [Contributing](#contributing)
 - [Authors](#authors)
