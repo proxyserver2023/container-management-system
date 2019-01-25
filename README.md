@@ -56,13 +56,15 @@ We use [semver](#semver.org) for versioning. For the versions available, see the
 ## Authors
 
 - **Alamin Mahamud** - Initial work - [alamin.rocks](https://alamin-rocks.herokuapp.com)
+
 See also the list of [contributors](./CONTRIBUTORS.md) who participated in this project.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE.md) file for details.
+This project is licensed under the MIT License.
+See the [LICENSE](./LICENSE.md) file for details.
 
 
 ## Credits
 
-1. README Banner Image Credit - [Maritime Connector - Andrew Mackinnon](http://maritime-connector.com/ship/wana-bhum-9308663/)
+1. `README` Banner Image Credit - [Maritime Connector - Andrew Mackinnon](http://maritime-connector.com/ship/wana-bhum-9308663/)
