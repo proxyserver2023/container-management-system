@@ -13,6 +13,29 @@
 - [License](#license)
 - [Credits](#credits)
 
+## Microservices
+
+- users
+- authentication
+- roles
+- consignments
+- vessels
+- inventory
+
+
+## Tools
+
+- Golang
+- Grpc
+- go-micro
+- Mongodb
+- Docker
+- Kubernetes
+- Google cloud
+- NATS
+- Circle CI
+- Terraform
+
 ## Getting Started
 
 ## Versioning
