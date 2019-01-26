@@ -65,7 +65,7 @@ We use [semver](#semver.org) for versioning. For the versions available, see the
 ## Contributing
 
 - Fork it
-- Download your fork to your PC (git clone https://github.com/your_username/cobra && cd cobra)
+- Download your fork to your PC (git clone https://github.com/alamin-mahamud/container-management-system && cd container-management-system)
 - Create your feature branch (git checkout -b my-new-feature)
 - Make changes and add them (git add .)
 - Commit your changes (git commit -m 'Add some feature')
