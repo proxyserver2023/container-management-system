@@ -17,6 +17,7 @@ const (
 // IRepository - creates a consignment and returns the created consignment also returning error if anything happens, otherwise nil
 type IRepository interface {
 	Create(*pb.Consignment) (*pb.Consignment, error)
+	GetAll() []*pb.Consignment
 }
 
 // Repository - Dummy repository, this simulates the use of a datastore
@@ -29,6 +30,10 @@ func (repo *Repository) Create(consignment *pb.Consignment) (*pb.Consignment, er
 	updated := append(repo.consignments, consignment)
 	repo.consignments = updated
 	return consignment, nil
+}
+
+func (repo *Repository) GetAll() []*pb.Consignment {
+	return repo.consignments
 }
 
 // Service should implement all of the methods to satisfy the service
@@ -55,6 +60,12 @@ func (s *service) CreateConsignment(ctx context.Context, req *pb.Consignment) (*
 	return &pb.Response{Created: true, Consignment: consignment}, nil
 }
 
+// GetConsignment - returns all the created consignments
+func (s *service) GetConsignments(ctx context.Context, req *pb.GetRequest) (*pb.Response, error) {
+	consignments := s.repo.GetAll()
+	return &pb.Response{Consignments: consignments}, nil
+}
+
 func main() {
 
 	repo := &Repository{}
@@ -64,6 +75,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
+	log.Println("Successfully initiated the server.")
 	s := grpc.NewServer()
 
 	// Register our service with the gRPC server, this will tie our
