@@ -65,11 +65,11 @@ We use [semver](#semver.org) for versioning. For the versions available, see the
 ## Contributing
 
 - Fork it
-- Download your fork to your PC (git clone https://github.com/alamin-mahamud/container-management-system && cd container-management-system)
-- Create your feature branch (git checkout -b my-new-feature)
-- Make changes and add them (git add .)
-- Commit your changes (git commit -m 'Add some feature')
-- Push to the branch (git push origin my-new-feature)
+- Download your fork to your PC (`git clone https://github.com/alamin-mahamud/container-management-system && cd container-management-system`)
+- Create your feature branch (`git checkout -b my-new-feature`)
+- Make changes and add them (`git add .`)
+- Commit your changes (`git commit -m 'Add some feature'`)
+- Push to the branch (`git push origin my-new-feature`)
 - Create new pull request
 
 
