@@ -5,7 +5,7 @@ import (
 	"log"
 	"net"
 
-	pb "github.com/alamin-mahamud/container-management-system/consignment/proto/consignment"
+	pb "github.com/alamin-mahamud/container-management-system/consignment/proto"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 )
