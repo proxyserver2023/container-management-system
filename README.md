@@ -45,8 +45,11 @@
 2. gRPC
 
 ``` shell
-go get -u google.golang.org/grpc
-go get -u github.com/golang/protobuf/protoc-gen-go
+# This Version is used before we used go-micro
+# go get -u google.golang.org/grpc
+# go get -u github.com/golang/protobuf/protoc-gen-go
+
+go get -u github.com/micro/protobuf/{proto,protoc-gen-go}
 ```
 
 ## Resources
