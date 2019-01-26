@@ -3,13 +3,16 @@
 
 package go_micro_srv_consignment
 
-import proto "github.com/golang/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import (
+	fmt "fmt"
+	proto "github.com/golang/protobuf/proto"
+	math "math"
+)
 
 import (
+	client "github.com/micro/go-micro/client"
+	server "github.com/micro/go-micro/server"
 	context "golang.org/x/net/context"
-	grpc "google.golang.org/grpc"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -21,7 +24,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 type Consignment struct {
 	Id                   string       `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -38,16 +41,17 @@ func (m *Consignment) Reset()         { *m = Consignment{} }
 func (m *Consignment) String() string { return proto.CompactTextString(m) }
 func (*Consignment) ProtoMessage()    {}
 func (*Consignment) Descriptor() ([]byte, []int) {
-	return fileDescriptor_consignment_5eb0ee347c9b1489, []int{0}
+	return fileDescriptor_774f0b29a0c4f8e9, []int{0}
 }
+
 func (m *Consignment) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Consignment.Unmarshal(m, b)
 }
 func (m *Consignment) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Consignment.Marshal(b, m, deterministic)
 }
-func (dst *Consignment) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Consignment.Merge(dst, src)
+func (m *Consignment) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Consignment.Merge(m, src)
 }
 func (m *Consignment) XXX_Size() int {
 	return xxx_messageInfo_Consignment.Size(m)
@@ -103,16 +107,17 @@ func (m *GetRequest) Reset()         { *m = GetRequest{} }
 func (m *GetRequest) String() string { return proto.CompactTextString(m) }
 func (*GetRequest) ProtoMessage()    {}
 func (*GetRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_consignment_5eb0ee347c9b1489, []int{1}
+	return fileDescriptor_774f0b29a0c4f8e9, []int{1}
 }
+
 func (m *GetRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetRequest.Unmarshal(m, b)
 }
 func (m *GetRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_GetRequest.Marshal(b, m, deterministic)
 }
-func (dst *GetRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetRequest.Merge(dst, src)
+func (m *GetRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetRequest.Merge(m, src)
 }
 func (m *GetRequest) XXX_Size() int {
 	return xxx_messageInfo_GetRequest.Size(m)
@@ -137,16 +142,17 @@ func (m *Container) Reset()         { *m = Container{} }
 func (m *Container) String() string { return proto.CompactTextString(m) }
 func (*Container) ProtoMessage()    {}
 func (*Container) Descriptor() ([]byte, []int) {
-	return fileDescriptor_consignment_5eb0ee347c9b1489, []int{2}
+	return fileDescriptor_774f0b29a0c4f8e9, []int{2}
 }
+
 func (m *Container) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Container.Unmarshal(m, b)
 }
 func (m *Container) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Container.Marshal(b, m, deterministic)
 }
-func (dst *Container) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Container.Merge(dst, src)
+func (m *Container) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Container.Merge(m, src)
 }
 func (m *Container) XXX_Size() int {
 	return xxx_messageInfo_Container.Size(m)
@@ -198,16 +204,17 @@ func (m *Response) Reset()         { *m = Response{} }
 func (m *Response) String() string { return proto.CompactTextString(m) }
 func (*Response) ProtoMessage()    {}
 func (*Response) Descriptor() ([]byte, []int) {
-	return fileDescriptor_consignment_5eb0ee347c9b1489, []int{3}
+	return fileDescriptor_774f0b29a0c4f8e9, []int{3}
 }
+
 func (m *Response) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Response.Unmarshal(m, b)
 }
 func (m *Response) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Response.Marshal(b, m, deterministic)
 }
-func (dst *Response) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Response.Merge(dst, src)
+func (m *Response) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Response.Merge(m, src)
 }
 func (m *Response) XXX_Size() int {
 	return xxx_messageInfo_Response.Size(m)
@@ -246,116 +253,9 @@ func init() {
 	proto.RegisterType((*Response)(nil), "go.micro.srv.consignment.Response")
 }
 
-// Reference imports to suppress errors if they are not otherwise used.
-var _ context.Context
-var _ grpc.ClientConn
+func init() { proto.RegisterFile("proto/consignment.proto", fileDescriptor_774f0b29a0c4f8e9) }
 
-// This is a compile-time assertion to ensure that this generated file
-// is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
-
-// ShippingServiceClient is the client API for ShippingService service.
-//
-// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type ShippingServiceClient interface {
-	CreateConsignment(ctx context.Context, in *Consignment, opts ...grpc.CallOption) (*Response, error)
-	GetConsignments(ctx context.Context, in *GetRequest, opts ...grpc.CallOption) (*Response, error)
-}
-
-type shippingServiceClient struct {
-	cc *grpc.ClientConn
-}
-
-func NewShippingServiceClient(cc *grpc.ClientConn) ShippingServiceClient {
-	return &shippingServiceClient{cc}
-}
-
-func (c *shippingServiceClient) CreateConsignment(ctx context.Context, in *Consignment, opts ...grpc.CallOption) (*Response, error) {
-	out := new(Response)
-	err := c.cc.Invoke(ctx, "/go.micro.srv.consignment.ShippingService/CreateConsignment", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *shippingServiceClient) GetConsignments(ctx context.Context, in *GetRequest, opts ...grpc.CallOption) (*Response, error) {
-	out := new(Response)
-	err := c.cc.Invoke(ctx, "/go.micro.srv.consignment.ShippingService/GetConsignments", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-// ShippingServiceServer is the server API for ShippingService service.
-type ShippingServiceServer interface {
-	CreateConsignment(context.Context, *Consignment) (*Response, error)
-	GetConsignments(context.Context, *GetRequest) (*Response, error)
-}
-
-func RegisterShippingServiceServer(s *grpc.Server, srv ShippingServiceServer) {
-	s.RegisterService(&_ShippingService_serviceDesc, srv)
-}
-
-func _ShippingService_CreateConsignment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Consignment)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ShippingServiceServer).CreateConsignment(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/go.micro.srv.consignment.ShippingService/CreateConsignment",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ShippingServiceServer).CreateConsignment(ctx, req.(*Consignment))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ShippingService_GetConsignments_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ShippingServiceServer).GetConsignments(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/go.micro.srv.consignment.ShippingService/GetConsignments",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ShippingServiceServer).GetConsignments(ctx, req.(*GetRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-var _ShippingService_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "go.micro.srv.consignment.ShippingService",
-	HandlerType: (*ShippingServiceServer)(nil),
-	Methods: []grpc.MethodDesc{
-		{
-			MethodName: "CreateConsignment",
-			Handler:    _ShippingService_CreateConsignment_Handler,
-		},
-		{
-			MethodName: "GetConsignments",
-			Handler:    _ShippingService_GetConsignments_Handler,
-		},
-	},
-	Streams:  []grpc.StreamDesc{},
-	Metadata: "proto/consignment.proto",
-}
-
-func init() {
-	proto.RegisterFile("proto/consignment.proto", fileDescriptor_consignment_5eb0ee347c9b1489)
-}
-
-var fileDescriptor_consignment_5eb0ee347c9b1489 = []byte{
+var fileDescriptor_774f0b29a0c4f8e9 = []byte{
 	// 350 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x52, 0xcd, 0x4e, 0xf3, 0x30,
 	0x10, 0xfc, 0xd2, 0xff, 0x6c, 0xaa, 0xaf, 0xc2, 0x07, 0x6a, 0xc1, 0x81, 0x28, 0x80, 0xd4, 0x53,
@@ -379,4 +279,77 @@ var fileDescriptor_consignment_5eb0ee347c9b1489 = []byte{
 	0x0c, 0xa7, 0xb9, 0x5f, 0x24, 0xc7, 0x9f, 0xb5, 0x1b, 0x4a, 0xfe, 0x91, 0x07, 0x98, 0x2c, 0xd0,
 	0x7a, 0x3a, 0x43, 0x6e, 0x8e, 0x0b, 0x0f, 0x3f, 0xf6, 0x34, 0xfb, 0xe7, 0x81, 0xbb, 0xf4, 0xfb,
 	0xaf, 0x00, 0x00, 0x00, 0xff, 0xff, 0xd2, 0x08, 0x54, 0x17, 0x04, 0x03, 0x00, 0x00,
+}
+
+// Reference imports to suppress errors if they are not otherwise used.
+var _ context.Context
+var _ client.Option
+var _ server.Option
+
+// Client API for ShippingService service
+
+type ShippingServiceClient interface {
+	CreateConsignment(ctx context.Context, in *Consignment, opts ...client.CallOption) (*Response, error)
+	GetConsignments(ctx context.Context, in *GetRequest, opts ...client.CallOption) (*Response, error)
+}
+
+type shippingServiceClient struct {
+	c           client.Client
+	serviceName string
+}
+
+func NewShippingServiceClient(serviceName string, c client.Client) ShippingServiceClient {
+	if c == nil {
+		c = client.NewClient()
+	}
+	if len(serviceName) == 0 {
+		serviceName = "go.micro.srv.consignment"
+	}
+	return &shippingServiceClient{
+		c:           c,
+		serviceName: serviceName,
+	}
+}
+
+func (c *shippingServiceClient) CreateConsignment(ctx context.Context, in *Consignment, opts ...client.CallOption) (*Response, error) {
+	req := c.c.NewRequest(c.serviceName, "ShippingService.CreateConsignment", in)
+	out := new(Response)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *shippingServiceClient) GetConsignments(ctx context.Context, in *GetRequest, opts ...client.CallOption) (*Response, error) {
+	req := c.c.NewRequest(c.serviceName, "ShippingService.GetConsignments", in)
+	out := new(Response)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// Server API for ShippingService service
+
+type ShippingServiceHandler interface {
+	CreateConsignment(context.Context, *Consignment, *Response) error
+	GetConsignments(context.Context, *GetRequest, *Response) error
+}
+
+func RegisterShippingServiceHandler(s server.Server, hdlr ShippingServiceHandler, opts ...server.HandlerOption) {
+	s.Handle(s.NewHandler(&ShippingService{hdlr}, opts...))
+}
+
+type ShippingService struct {
+	ShippingServiceHandler
+}
+
+func (h *ShippingService) CreateConsignment(ctx context.Context, in *Consignment, out *Response) error {
+	return h.ShippingServiceHandler.CreateConsignment(ctx, in, out)
+}
+
+func (h *ShippingService) GetConsignments(ctx context.Context, in *GetRequest, out *Response) error {
+	return h.ShippingServiceHandler.GetConsignments(ctx, in, out)
 }
