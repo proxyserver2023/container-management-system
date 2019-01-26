@@ -1,3 +1,7 @@
-FROM alpine:latest
+FROM scratch
+
 WORKDIR /app
-ADD consignment-service /app/consignment-service
+ADD ./consignment-service .
+
+# ENTRYPOINT ["sh","./consignment-service"]
+CMD ["/app/consignment-service"]
