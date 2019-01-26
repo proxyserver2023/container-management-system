@@ -1,3 +1,5 @@
-FROM alpine:latest
+FROM scratch
 WORKDIR /app
-ADD consignment-service /app/consignment-service
+ADD consignment.json .
+ADD consignment-cli consignment-cli
+CMD ["./consignment-cli"]
