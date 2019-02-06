@@ -17,9 +17,8 @@ WORKDIR /go/src/github.com/alamin-mahamud/container-management-system/consignmen
 # quirks in how go get works with sub-packages.
 RUN go get -u github.com/golang/dep/cmd/dep
 
-# Create a dep project, and run `ensure`, which will pull in all
-# of the dependencies within this directory.
-RUN dep init && dep ensure
+# Create a dep project
+RUN dep init
 
 # Copy the current code into our workdir
 ADD Gopkg.toml Gopkg.toml
