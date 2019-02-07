@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	pb "github.com/alamin-mahamud/container-management-system/consignment-service/proto"
+	pb "github.com/alamin-mahamud/container-management-system/consignment-service/proto/consignment"
 	micro "github.com/micro/go-micro"
 )
 
@@ -85,4 +85,5 @@ func main() {
 	if err := srv.Run(); err != nil {
 		fmt.Println(err)
 	}
+	
 }
