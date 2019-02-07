@@ -1,9 +1,0 @@
-package: github.com/alamin-mahamud/container-management-system/consignment-cli
-import:
-- package: github.com/alamin-mahamud/container-management-system
-  subpackages:
-  - consignment-service/proto
-- package: github.com/micro/go-micro
-  subpackages:
-  - client
-  - cmd
