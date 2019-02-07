@@ -1,6 +1,6 @@
 build:
 	protoc -I. --go_out=plugins=micro:$(GOPATH)/src/github.com/alamin-mahamud/container-management-system/consignment-service \
-		proto/consignment.proto
+		proto/consignment/consignment.proto
 	docker build -t consignment-service .
 
 run:
