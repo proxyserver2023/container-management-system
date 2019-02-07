@@ -17,17 +17,19 @@ WORKDIR /go/src/github.com/alamin-mahamud/container-management-system/consignmen
 # quirks in how go get works with sub-packages.
 RUN go get -u github.com/golang/dep/cmd/dep
 
-# Create a dep project
-RUN dep init
+# Force the go compiler to use modules
+ENV GO111MODULE=on
 
-# Copy the current code into our workdir
-ADD Gopkg.toml Gopkg.toml
-ADD Gopkg.lock Gopkg.lock
+# We want to populate the module cache based on the go.{mod,sum} files.
+COPY go.mod .
+COPY go.sum .
 
-# install packages
-# --vendor-only is used to restrict dep from scanning source code
-# and finding dependencies
-RUN dep ensure --vendor-only
+#This is the ‘magic’ step that will download all the dependencies that are specified in 
+# the go.mod and go.sum file.
+# Because of how the layer caching system works in Docker, the  go mod download 
+# command will _ only_ be re-run when the go.mod or go.sum file change 
+# (or when we add another docker instruction this line)
+RUN go mod download
 
 COPY . .
 
