@@ -8,25 +8,25 @@ import (
 	micro "github.com/micro/go-micro"
 )
 
-// IRepository - creates a consignment and returns the created consignment also returning error if anything happens, otherwise nil
-type IRepository interface {
+// Repository - creates a consignment and returns the created consignment also returning error if anything happens, otherwise nil
+type Repository interface {
 	Create(*pb.Consignment) (*pb.Consignment, error)
 	GetAll() []*pb.Consignment
 }
 
 // Repository - Dummy repository, this simulates the use of a datastore
 // of some kind. We'll replace this with a real implementation later on.
-type Repository struct {
+type ConsignmentRepository struct {
 	consignments []*pb.Consignment
 }
 
-func (repo *Repository) Create(consignment *pb.Consignment) (*pb.Consignment, error) {
+func (repo *ConsignmentRepository) Create(consignment *pb.Consignment) (*pb.Consignment, error) {
 	updated := append(repo.consignments, consignment)
 	repo.consignments = updated
 	return consignment, nil
 }
 
-func (repo *Repository) GetAll() []*pb.Consignment {
+func (repo *ConsignmentRepository) GetAll() []*pb.Consignment {
 	return repo.consignments
 }
 
@@ -35,7 +35,7 @@ func (repo *Repository) GetAll() []*pb.Consignment {
 // in the generated code itself for the exact method signatures etc
 // to give you a better idea.
 type service struct {
-	repo IRepository
+	repo Repository
 }
 
 // CreateConsignment - we created just one method on our service,
@@ -64,7 +64,7 @@ func (s *service) GetConsignments(ctx context.Context, req *pb.GetRequest, res *
 
 func main() {
 
-	repo := &Repository{}
+	repo := &ConsignmentRepository{}
 
 	// Create a new service. Optionally include some options here.
 	srv := micro.NewService(
@@ -85,5 +85,5 @@ func main() {
 	if err := srv.Run(); err != nil {
 		fmt.Println(err)
 	}
-	
+
 }
