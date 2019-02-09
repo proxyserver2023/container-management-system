@@ -1,0 +1,20 @@
+package: github.com/alamin-mahamud/container-management-system/user-service
+import:
+- package: github.com/dgrijalva/jwt-go
+- package: github.com/golang/protobuf
+  subpackages:
+  - proto
+- package: github.com/jinzhu/gorm
+  subpackages:
+  - dialects/postgres
+- package: github.com/micro/go-micro
+  subpackages:
+  - client
+  - server
+- package: github.com/satori/go.uuid
+- package: golang.org/x/crypto
+  subpackages:
+  - bcrypt
+- package: golang.org/x/net
+  subpackages:
+  - context
