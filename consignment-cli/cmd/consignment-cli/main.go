@@ -2,33 +2,20 @@ package main
 
 import (
 	"context"
-	"encoding/json"
-	"io/ioutil"
 	"log"
 	"os"
 
+	"github.com/alamin-mahamud/container-management-system/consignment-cli/pkg/utl"
 	pb "github.com/alamin-mahamud/container-management-system/consignment-service/proto/consignment"
 
 	microclient "github.com/micro/go-micro/client"
 	"github.com/micro/go-micro/cmd"
+	"github.com/micro/go-micro/metadata"
 )
 
 const (
 	defaultFileName = "consignment.json"
 )
-
-func parseFile(file string) (*pb.Consignment, error) {
-	var consignment *pb.Consignment
-	data, err := ioutil.ReadFile(file)
-	if err != nil {
-		return nil, err
-	}
-	err = json.Unmarshal(data, &consignment)
-	if err != nil {
-		return nil, err
-	}
-	return consignment, err
-}
 
 func main() {
 	err := cmd.Init()
@@ -39,21 +26,26 @@ func main() {
 
 	// Create a new greeter client
 	client := pb.NewShippingServiceClient("go.micro.srv.consignment", microclient.DefaultClient)
+
 	file := defaultFileName
+	var token string
+
 	if len(os.Args) > 1 {
 		file = os.Args[1]
+		token = os.Args[2]
 	}
 
-	consignment, err := parseFile(file)
+	consignment, err := utl.ParseFile(file)
 
 	if err != nil {
 		log.Fatalf("Could not parse file: %v", err)
 	}
 
-	r, err := client.CreateConsignment(
-		context.Background(),
-		consignment,
-	)
+	ctx := metadata.NewContext(context.Background(), map[string]string{
+		"token": token,
+	})
+
+	r, err := client.CreateConsignment(ctx, consignment)
 
 	if err != nil {
 		log.Fatalf("Could not Create consignment: %v", err)
@@ -62,7 +54,7 @@ func main() {
 	log.Printf("Created %t", r.Created)
 
 	getAll, err := client.GetConsignments(
-		context.Background(),
+		ctx,
 		&pb.GetRequest{},
 	)
 
