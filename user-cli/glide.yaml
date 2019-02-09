@@ -1,0 +1,8 @@
+package: github.com/alamin-mahamud/container-management-system/user-cli
+import:
+- package: github.com/alamin-mahamud/container-management-system
+  subpackages:
+  - user-service/proto/user
+- package: github.com/micro/go-micro
+  subpackages:
+  - cmd
