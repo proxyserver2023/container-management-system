@@ -34,8 +34,8 @@ RUN CGO_ENABLED=0 \
 	GOOS=linux \
 	go build -a \
 	-installsuffix cgo \
-	-o consignment-service \
-	cmd/consignment-service/main.go
+	-o vessel-service \
+	cmd/vessel-service/main.go
 
 # Here we're using a second FROM statement, which is strange,
 # but this tells Docker to start a new build process with this
