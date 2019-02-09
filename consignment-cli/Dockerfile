@@ -12,11 +12,6 @@ FROM golang:${GO_VERSION} as builder
 # Set our workdir to our current service in the gopath
 WORKDIR /go/src/github.com/alamin-mahamud/container-management-system/consignment-cli
 
-# Here we're pulling in godep, which is a dependency manager tool,
-# we're going to use dep instead of go get, to get around a few
-# quirks in how go get works with sub-packages.
-RUN go get -u github.com/golang/dep/cmd/dep
-
 # Force the go compiler to use modules
 ENV GO111MODULE=on
 
