@@ -20,7 +20,7 @@ message User {
 
 message Request {}
 
-message Respose {
+message Response {
         User user = 1;
         repeated User users = 2;
         repeated Error errors = 3;
